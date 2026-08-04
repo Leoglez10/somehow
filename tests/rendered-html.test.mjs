@@ -63,23 +63,27 @@ test("renderiza la portada explicativa separada de la aplicación", async () => 
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
-test("renderiza el primer paso de la experiencia guiada en la aplicación", async () => {
+test("mantiene /app protegida cuando faltan las variables públicas de Supabase", async () => {
   const response = await render("/app");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   assert.match(html, /<title>Somewhen — tiempo para tu gente<\/title>/i);
-  assert.match(html, /Arma una propuesta/);
-  assert.match(html, /Paso 1 de 4: Plan/i);
-  assert.match(html, /¿Qué plan quieres proponer\?/);
-  assert.match(html, /Necesito inspiración/);
-  assert.match(html, /¿A quién quieres invitar\?/);
-  assert.match(html, /Duración o detalles/);
-  assert.match(html, /Escribe una idea e invita al menos a una persona para continuar\./);
-  assert.match(html, /aria-describedby="invitees-help"/);
-  assert.match(html, /aria-describedby="step-requirement"/);
+  assert.match(html, /Aplicación protegida/);
+  assert.match(html, /Configura Supabase para entrar/);
+  assert.doesNotMatch(html, /Arma una propuesta/);
+  assert.doesNotMatch(html, /¿Qué plan quieres proponer\?/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
+});
+
+test("explica la configuración segura en /login sin intentar crear una sesión", async () => {
+  const response = await render("/login");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Conecta las claves públicas de Supabase/);
+  assert.match(html, /service_role/);
+  assert.doesNotMatch(html, /Continuar con Google/);
 });
 
 test("mantiene visible la explicación del botón bloqueado en pantallas pequeñas", async () => {
