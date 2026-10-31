@@ -1,5 +1,7 @@
 # Somewhen
 
+> 🇬🇧 **In English:** Somewhen helps a group find a shared time slot without exposing anyone's private calendar. Next.js + Supabase with row-level security, OAuth and Realtime.
+
 Somewhen ayuda a un grupo a encontrar un horario compartido sin exponer la agenda privada de ninguna persona. La aplicación conserva el flujo abierto de propuesta —idea, integrantes, lugar opcional, calendario real y revisión— y ahora persiste el proceso completo en Supabase.
 
 ## Capturas
