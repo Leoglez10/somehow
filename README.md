@@ -2,6 +2,12 @@
 
 Somewhen ayuda a un grupo a encontrar un horario compartido sin exponer la agenda privada de ninguna persona. La aplicación conserva el flujo abierto de propuesta —idea, integrantes, lugar opcional, calendario real y revisión— y ahora persiste el proceso completo en Supabase.
 
+## Capturas
+
+<img src="docs/screenshots/desktop.png" alt="Somewhen — escritorio" width="100%">
+
+<p align="center"><img src="docs/screenshots/login.png" alt="Somewhen — login" width="560"> <img src="docs/screenshots/mobile.png" alt="Somewhen — móvil" width="260"></p>
+
 ## Qué funciona
 
 - acceso con Google OAuth y enlace mágico por correo;
